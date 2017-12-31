@@ -29,18 +29,20 @@ public class SuperTest {
         assertEquals(1, skiPass1.getCardData().getUsages());
         assertEquals(true, tourniquet.validateCard(skiPass1));
         assertEquals(1, skiPass1.getCardData().getUsages());
-        skiPass1.getCardData().block();
+        tourniquet.block(skiPass1);
         assertEquals(false, tourniquet.validateCard(skiPass1));
+        tourniquet.open(skiPass1);
+        assertEquals(true, tourniquet.validateCard(skiPass1));
 
         assertEquals(1, skiPass2.getCardData().getUsages());
         assertEquals(true, tourniquet.validateCard(skiPass2));
         assertEquals(1, skiPass2.getCardData().getUsages());
-        skiPass2.getCardData().block();
+        tourniquet.block(skiPass2);
         assertEquals(false, tourniquet.validateCard(skiPass2));
 
         assertEquals(1, skiPass3.getCardData().getUsages());
         assertEquals(true, tourniquet.validateCard(skiPass3));
         assertEquals(0, skiPass3.getCardData().getUsages());
-        assertEquals(false, tourniquet.validateCard(skiPass1));
+        assertEquals(false, tourniquet.validateCard(skiPass3));
     }
 }
